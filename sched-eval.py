@@ -7,9 +7,8 @@ day_values = { 'M' : 1,
                'H' : 4,
                'F' : 5  }
 
-for x in all_options:
-    print("\n\nEvaluating a '{0}' Schedule".format(''.join(x)))
-    schedule = x
+for schedule in all_options:
+    print("\n\nEvaluating a '{0}' Schedule".format(''.join(schedule)))
     shortest_span = 15
     longest_span = 0
 
