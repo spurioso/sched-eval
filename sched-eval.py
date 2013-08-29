@@ -47,9 +47,9 @@ for schedule in all_options:
         gap = next_meeting + 7 - this_meeting
         
         # print out the result of this calculation using the string formatting
-        # function, which inserts whatever is within .format() appended to the
+        # function, which inserts the items within the .format() appended to the
         # string into the anchor points marked by numbers in curly brackets
-        print("In week {0} there are {1} days between this meeting and the next.".format(position + 1, gap))
+        print("Week {0}: There are {1} days between {2} and {3}.".format(position + 1, gap, day_letter, schedule[next_index]))
         
         # check whether the current gap is the shortest or the longest
         # found so far in this particular schedule, and if so, keep track of it
