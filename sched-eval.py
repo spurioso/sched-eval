@@ -12,9 +12,13 @@ day_values = { 'M' : 1,
                'H' : 4,
                'F' : 5  }
 
+# Start a counter to keep track of schedules
+# and to enhance readability of results
+counter = 1
+
 # iterate through each of the possible schedules
 for schedule in all_options:
-    print("\n\nEvaluating a {0} Schedule".format(''.join(schedule)))
+    print("\n\n" + str(counter) + ". Evaluating a {0} Schedule".format(''.join(schedule)))
     
     # set one more than the longest possible value as the shortest span
     shortest_span = 12
@@ -57,11 +61,14 @@ for schedule in all_options:
         if gap < shortest_span:
             shortest_span = gap
         if gap > longest_span:
-            longest_span = gap
+            longest_span = gap        
             
         # End of the loop that evaluates the gap between meetings
         # This section will repeat until the entire schedule has been checked
-
+    
+    # Increment the counter    
+    counter = counter + 1    
+    
     # after finising inerating through the proposed schedule, report its
     # largest and smallest gaps between meetings
     print("The shortest time between meetings is {0} days".format(shortest_span))
