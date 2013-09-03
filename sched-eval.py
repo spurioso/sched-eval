@@ -102,12 +102,17 @@ for candidate in candidates:
     # and add it to a list of final candidates if it's the longest_shortest_span yet
     if candidate[2] >= longest_shortest_span:
         longest_shortest_span = candidate[2]
-        final_candidates.append(candidate[0])
 
+for candidate in candidates:
+    if candidate[2] == longest_shortest_span:
+        final_candidates.append(candidate)
+        
 # output what you've found
 print "The longest shortest span for all schedules is {0}, which is found in the following schedules".format(longest_shortest_span)
-for candidate in final_candidates:
-    schedule = candidates[candidate][1]
-    print ''.join(schedule)
+print final_candidates
+
+#for candidate in final_candidates:
+#    schedule = candidates[candidate][1]
+#    print ''.join(schedule) + str(candidates[candidate][4])
 
     
