@@ -14,7 +14,12 @@ day_values = { 'M' : 1,
 
 # Start a counter to keep track of schedules
 # and to enhance readability of results
-counter = 1
+counter = 0
+
+# Start of list of lists to keep track of schedules, shortest spans between meetings
+# and longest spans between meetings
+
+candidates = []
 
 # iterate through each of the possible schedules
 for schedule in all_options:
@@ -66,8 +71,14 @@ for schedule in all_options:
         # End of the loop that evaluates the gap between meetings
         # This section will repeat until the entire schedule has been checked
     
+    # Gather information for this particular schedule into a list    
+    candidate = [counter, schedule, shortest_span, longest_span] 
+    
+    # Append the information for this schedule to a growing list of all possible schedules
+    candidates.append(candidate)
+    
     # Increment the counter    
-    counter = counter + 1    
+    counter = counter + 1
     
     # after finising inerating through the proposed schedule, report its
     # largest and smallest gaps between meetings
@@ -77,3 +88,6 @@ for schedule in all_options:
     # This is the end of the iterator for the schedule.
     # At this point the next proposed schedule will be loaded from all_options
     # and the gaps between its meetings will be checked.
+
+# Test to make sure you got a list of all schedules with the needed info
+print candidates
