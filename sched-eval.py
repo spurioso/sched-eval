@@ -18,7 +18,6 @@ counter = 0
 
 # Start of list of lists to keep track of schedules, shortest spans between meetings
 # and longest spans between meetings
-
 candidates = []
 
 # iterate through each of the possible schedules
@@ -71,8 +70,10 @@ for schedule in all_options:
         # End of the loop that evaluates the gap between meetings
         # This section will repeat until the entire schedule has been checked
     
+    meetinggap_differential = longest_span - shortest_span
+    
     # Gather information for this particular schedule into a list    
-    candidate = [counter, schedule, shortest_span, longest_span] 
+    candidate = [counter, schedule, shortest_span, longest_span, meetinggap_differential] 
     
     # Append the information for this schedule to a growing list of all possible schedules
     candidates.append(candidate)
@@ -89,5 +90,24 @@ for schedule in all_options:
     # At this point the next proposed schedule will be loaded from all_options
     # and the gaps between its meetings will be checked.
 
-# Test to make sure you got a list of all schedules with the needed info
-print candidates
+# Set a variable for the longest shortest span
+longest_shortest_span = 2
+
+# start a new list of schedules with longest shortest spans
+final_candidates = []
+
+for candidate in candidates:
+    
+    # check each candidate's shortest span against the current longest_shortest_span
+    # and add it to a list of final candidates if it's the longest_shortest_span yet
+    if candidate[2] >= longest_shortest_span:
+        longest_shortest_span = candidate[2]
+        final_candidates.append(candidate[0])
+
+# output what you've found
+print "The longest shortest span for all schedules is {0}, which is found in the following schedules".format(longest_shortest_span)
+for candidate in final_candidates:
+    schedule = candidates[candidate][1]
+    print ''.join(schedule)
+
+    
