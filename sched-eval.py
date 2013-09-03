@@ -100,19 +100,28 @@ for candidate in candidates:
     
     # check each candidate's shortest span against the current longest_shortest_span
     # and add it to a list of final candidates if it's the longest_shortest_span yet
-    if candidate[2] >= longest_shortest_span:
-        longest_shortest_span = candidate[2]
+    if candidate[2] > longest_shortest_span:
+        longest_shortest_span = candidate[2]    
 
 for candidate in candidates:
     if candidate[2] == longest_shortest_span:
         final_candidates.append(candidate)
+
+
         
 # output what you've found
-print "The longest shortest span for all schedules is {0}, which is found in the following schedules".format(longest_shortest_span)
-print final_candidates
+print "The longest shortest span for all schedules is {0}, which is found in the following schedules:".format(longest_shortest_span)
 
-#for candidate in final_candidates:
-#    schedule = candidates[candidate][1]
-#    print ''.join(schedule) + str(candidates[candidate][4])
+# print final_candidates
+for candidate in final_candidates:
+    schedule = candidate[1]
+    print ''.join(schedule)
+
+
+# out of time. This next bit for evaluating gap differentials. They're all the same anyway!
+smallest_meetinggap_differential = 14
 
     
+for candidate in final_candidates:
+    if candidate[4] < smallest_meetinggap_differential:
+        smallest_meetinggap_differential = candidate[4]
